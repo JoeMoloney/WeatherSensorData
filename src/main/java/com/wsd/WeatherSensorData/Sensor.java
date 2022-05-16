@@ -19,17 +19,22 @@ public class Sensor
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private int id;
     private String country;
     private String city;
+    private float temperature;
+    private float humidity;
+    private float pressure;
     
-    public Integer getId()
+    public Sensor(){}
+    public Sensor(String country, String city, 
+            float temperature, float humidity, float pressure)
     {
-        return this.id;
-    }
-    public void setId(Integer id)
-    {
-        this.id = id;
+        this.country = country;
+        this.city = city;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
     }
     
     public String getCountry()
@@ -48,5 +53,32 @@ public class Sensor
     public void setCity(String city)
     {
         this.city = city;
+    }
+    
+    public float getTemperature()
+    {
+        return this.temperature;
+    }
+    public void setTemperature(float temp)
+    {
+        this.temperature = temp;
+    }
+    
+    public float getHumidity()
+    {
+        return this.humidity;
+    }
+    public void setHumidity(float hum)
+    {
+        this.humidity = hum;
+    }
+    
+    public float getPressure()
+    {
+        return this.pressure;
+    }
+    public void setPressure(float press)
+    {
+        this.pressure = press;
     }
 }
