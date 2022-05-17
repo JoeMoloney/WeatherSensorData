@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.Repositorys;
+package com.wsd.WeatherSensorData.service;
 
-import com.wsd.WeatherSensorData.Entitys.Sensor;
+import com.wsd.WeatherSensorData.entitys.Sensor;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author Joe Moloney
  */
-public interface SensorRepository extends CrudRepository<Sensor, Integer>
+public interface SensorService extends CrudRepository<Sensor, Integer>
 {
     
 }

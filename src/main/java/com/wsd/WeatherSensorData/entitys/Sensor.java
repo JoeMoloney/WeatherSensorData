@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.Entitys;
+package com.wsd.WeatherSensorData.entitys;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,17 +24,20 @@ public class Sensor
     private String city;
     private int temperature;
     private int humidity;
-    private int pressure;
     
     public Sensor(){}
     public Sensor(String country, String city, 
-            int temperature, int humidity, int pressure)
+            int temperature, int humidity)
     {
         this.country = country;
         this.city = city;
         this.temperature = temperature;
         this.humidity = humidity;
-        this.pressure = pressure;
+    }
+    
+    public Integer getId()
+    {
+        return this.id;
     }
     
     public String getCountry()
@@ -71,14 +74,5 @@ public class Sensor
     public void setHumidity(int hum)
     {
         this.humidity = hum;
-    }
-    
-    public float getPressure()
-    {
-        return this.pressure;
-    }
-    public void setPressure(int press)
-    {
-        this.pressure = press;
     }
 }

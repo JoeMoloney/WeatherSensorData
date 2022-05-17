@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.Controllers;
+package com.wsd.WeatherSensorData.controllers;
 
-import com.wsd.WeatherSensorData.Repositorys.SensorRepository;
-import com.wsd.WeatherSensorData.Entitys.Sensor;
+import com.wsd.WeatherSensorData.entitys.Sensor;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.wsd.WeatherSensorData.service.SensorService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
@@ -27,15 +29,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class SpringController
 {
     @Autowired
-    private SensorRepository sensorRepository;
+    private SensorService sensorRepository;
     
     @PostMapping(path = "/register") //Register a new sensor
+    @ResponseStatus(HttpStatus.OK)
     public @ResponseBody String registerSensor(@RequestParam String countryName, 
-            @RequestParam String cityName, @RequestParam int temperature, @RequestParam int humidity, @RequestParam int pressure)
+            @RequestParam String cityName, @RequestParam int temperature, @RequestParam int humidity)
     {
-        sensorRepository.save(new Sensor(countryName, cityName, temperature, humidity, pressure));
-        return String.format("Saved: Country: %s, City: %s, Temperature: %d, Humidity: %d, Pressure: %d", 
-                countryName, cityName, temperature, humidity, pressure);
+        sensorRepository.save(new Sensor(countryName, cityName, temperature, humidity));
+        return String.format("Saved: Country: %s, City: %s, Temperature: %d, Humidity: %d", 
+                countryName, cityName, temperature, humidity);
     }
     
     @GetMapping(path = "/getAll") //Get all sensors and data
