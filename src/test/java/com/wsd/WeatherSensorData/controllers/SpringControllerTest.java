@@ -30,8 +30,8 @@ class SpringControllerTest
     private TestRestTemplate restTemplate;
     @Autowired
     private SpringController springController; //Main application controller
-    @Autowired
-    private MockMvc mockMvc; //Test layer below, handles HTTP request by sending to controller
+//    @Autowired
+//    private MockMvc mockMvc; //Test layer below, handles HTTP request by sending to controller
     
     @LocalServerPort
     private int port;
@@ -49,7 +49,7 @@ class SpringControllerTest
         assertThat(springController).isNotNull();
     }
     
-    @Test
+//    @Test
     public void testRegisterNewSensor()
     {
         Sensor s1 = new Sensor();
