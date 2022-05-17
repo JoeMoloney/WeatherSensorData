@@ -6,13 +6,16 @@
 package com.wsd.WeatherSensorData.service;
 
 import com.wsd.WeatherSensorData.entitys.Sensor;
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
 
 /**
  *
  * @author Joe Moloney
  */
-public interface SensorService extends CrudRepository<Sensor, Integer>
+public interface SensorService
 {
-    
+    void save(Sensor s);
+    Iterable<Sensor> findAll();
+    Optional<Sensor> findById(Integer i);
+    void delete(Sensor s);
 }
