@@ -22,13 +22,13 @@ public class Sensor
     private int id;
     private String country;
     private String city;
-    private float temperature;
-    private float humidity;
-    private float pressure;
+    private int temperature;
+    private int humidity;
+    private int pressure;
     
     public Sensor(){}
     public Sensor(String country, String city, 
-            float temperature, float humidity, float pressure)
+            int temperature, int humidity, int pressure)
     {
         this.country = country;
         this.city = city;
@@ -59,7 +59,7 @@ public class Sensor
     {
         return this.temperature;
     }
-    public void setTemperature(float temp)
+    public void setTemperature(int temp)
     {
         this.temperature = temp;
     }
@@ -68,7 +68,7 @@ public class Sensor
     {
         return this.humidity;
     }
-    public void setHumidity(float hum)
+    public void setHumidity(int hum)
     {
         this.humidity = hum;
     }
@@ -77,7 +77,7 @@ public class Sensor
     {
         return this.pressure;
     }
-    public void setPressure(float press)
+    public void setPressure(int press)
     {
         this.pressure = press;
     }

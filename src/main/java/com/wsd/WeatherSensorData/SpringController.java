@@ -29,7 +29,7 @@ public class SpringController
     
     @PostMapping(path = "/register") //Register a new sensor
     public @ResponseBody String registerSensor(@RequestParam String countryName, 
-            @RequestParam String cityName, @RequestParam float temperature, @RequestParam float humidity, @RequestParam float pressure)
+            @RequestParam String cityName, @RequestParam int temperature, @RequestParam int humidity, @RequestParam int pressure)
     {   
         sensorRepository.save(new Sensor(countryName, cityName, temperature, humidity, pressure));
         return String.format("Saved: Country: %s, City: %s, Temperature: %d, Humidity: %d, Pressure: %d", 
