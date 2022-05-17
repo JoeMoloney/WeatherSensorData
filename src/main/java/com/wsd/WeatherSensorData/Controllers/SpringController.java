@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData;
+package com.wsd.WeatherSensorData.Controllers;
 
+import com.wsd.WeatherSensorData.Repositorys.SensorRepository;
+import com.wsd.WeatherSensorData.Entitys.Sensor;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +32,7 @@ public class SpringController
     @PostMapping(path = "/register") //Register a new sensor
     public @ResponseBody String registerSensor(@RequestParam String countryName, 
             @RequestParam String cityName, @RequestParam int temperature, @RequestParam int humidity, @RequestParam int pressure)
-    {   
+    {
         sensorRepository.save(new Sensor(countryName, cityName, temperature, humidity, pressure));
         return String.format("Saved: Country: %s, City: %s, Temperature: %d, Humidity: %d, Pressure: %d", 
                 countryName, cityName, temperature, humidity, pressure);
