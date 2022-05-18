@@ -6,9 +6,15 @@
 package com.wsd.WeatherSensorData.service;
 
 import com.wsd.WeatherSensorData.entity.Sensor;
+import com.wsd.WeatherSensorData.repository.SensorRepository;
+import java.util.ArrayList;
+import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
@@ -17,26 +23,30 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 public class SensorServiceImplTest
-{
+{   
     @Mock
-    Sensor sensor;
+    SensorRepository mockSensorRepository;
     
     @InjectMocks
-    SensorServiceImpl sensorService;
+    SensorServiceImpl mockSensorService;
     
-//    @Test
-//    public void returnTempWhenCountryProvided()
-//    {
-//        Sensor s = new Sensor();
-//        s.setCountry("Netherlands");
-//        s.setCity("Utrecht");
-//        s.setTemperature(0);
-//        s.setHumidity(0);
-//        
-//        String countryName = "Netherlands";
-//        float expectedValue = 0;
-//        
-//        Mockito.when(sensorService.getCountryAverageTemp(countryName)).thenReturn(expectedValue);
-//        Assert.assertEquals(expectedValue, s.getTemperature());
-//    }
+    @Test
+    public void returnTempWhenCountryProvided()
+    {
+        List<Sensor> sensorList = new ArrayList<>();
+        
+        Sensor s = new Sensor();
+        s.setCountry("Netherlands");
+        s.setCity("Utrecht");
+        s.setTemperature(20);
+        s.setHumidity(15);
+        
+        sensorList.add(s);
+        
+        int expectedValue = 20;
+        String countryName = "Netherlands";
+        
+        Mockito.when(mockSensorRepository.findAll()).thenReturn(sensorList);
+        assertEquals(expectedValue, mockSensorService.getCountryAverageTemp(countryName));
+    }
 }

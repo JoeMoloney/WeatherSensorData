@@ -6,12 +6,12 @@
 package com.wsd.WeatherSensorData.repository;
 
 import com.wsd.WeatherSensorData.entity.Sensor;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Joe Moloney
  */
 
-public interface SensorRepository extends CrudRepository<Sensor, Integer>
+public interface SensorRepository extends JpaRepository<Sensor, Integer>
 {}

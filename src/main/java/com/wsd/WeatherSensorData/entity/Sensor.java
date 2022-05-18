@@ -58,7 +58,7 @@ public class Sensor
         this.city = city;
     }
     
-    public float getTemperature()
+    public int getTemperature()
     {
         return this.temperature;
     }

@@ -23,8 +23,6 @@ import org.springframework.test.annotation.DirtiesContext;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class SpringControllerTest
 {   
-//    @Autowired //Resolve & Inject collaborating beans into this bean
-//    private TestRestTemplate restTemplate;
     @Autowired
     private SpringController springController; //Main application controller
     
@@ -43,21 +41,6 @@ class SpringControllerTest
     {
         assertThat(springController).isNotNull();
     }
-    
-//    @Test
-//    public void testRegisterNewSensor()
-//    {
-//        Sensor s1 = new Sensor();
-//        s1.setCountry("Netherlands");
-//        s1.setCity("Utrecht");
-//        s1.setTemperature(35);
-//        s1.setHumidity(21);
-//        restTemplate.postForObject(url("/wsd/register"), s1, String.class);
-//        
-//        restTemplate.postForObject(url("/wsd/register"), s1, Sensor.class);
-//        
-//        assertEquals(HttpStatus.OK);
-//    }
     
     private String url(String path)
     {

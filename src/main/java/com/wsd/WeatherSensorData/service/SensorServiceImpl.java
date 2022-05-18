@@ -7,6 +7,7 @@ package com.wsd.WeatherSensorData.service;
 
 import com.wsd.WeatherSensorData.entity.Sensor;
 import com.wsd.WeatherSensorData.repository.SensorRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,7 +29,7 @@ public class SensorServiceImpl implements SensorService
     }
 
     @Override
-    public Iterable<Sensor> findAll()
+    public List<Sensor> findAll()
     {
         return sensorRepository.findAll();
     }
@@ -50,7 +51,7 @@ public class SensorServiceImpl implements SensorService
     {
         int count = 0, tally = 0;
         float average;
-        Iterable<Sensor> countrySensors = findAll();
+        List<Sensor> countrySensors = findAll();
         
         for (Sensor s : countrySensors)
         {
@@ -62,5 +63,11 @@ public class SensorServiceImpl implements SensorService
         }
         
         return average = tally / count;
+    }
+
+    @Override
+    public int getTemperature(Sensor s)
+    {
+        return s.getTemperature();
     }
 }

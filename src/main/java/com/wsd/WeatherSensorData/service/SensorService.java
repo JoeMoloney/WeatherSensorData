@@ -6,6 +6,7 @@
 package com.wsd.WeatherSensorData.service;
 
 import com.wsd.WeatherSensorData.entity.Sensor;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -15,9 +16,10 @@ import java.util.Optional;
 public interface SensorService
 {
     void save(Sensor s);
-    Iterable<Sensor> findAll();
+    List<Sensor> findAll();
     Optional<Sensor> findById(Integer i);
     void delete(Sensor s);
     
     Float getCountryAverageTemp(String country);
+    int getTemperature(Sensor s);
 }
