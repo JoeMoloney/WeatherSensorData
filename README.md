@@ -4,9 +4,11 @@ RESTful Spring Boot application to handle data from weather sensors
 ## Requirements
 - Java 11 (Runtime Version 55 - SE Development Kit 11.0.15)
 - Apache Netbeans 12.4 (Or any IDE of your choosing)
-- XAMPP 8.1.6
-    - PhpMyAdmin Module
+- XAMPP 8.1.6 Modules:
+- - Server: 
     - MySQL Module
+- - Program Languages:
+    - phpMyAdmin
 ## Startup
 - Load XAMPP and start modules:
   - Apache (Should be ports 80, 443)
