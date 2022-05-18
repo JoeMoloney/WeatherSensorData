@@ -6,5 +6,5 @@ RESTful Spring Boot application to handle data from weather sensors
 - XAMPP 8.1.6
     - PHP MyAdmin Module
     - MySQL Module
-
-# Notes
+    - PhpMyAdmin Module
+# Step-By-Step
