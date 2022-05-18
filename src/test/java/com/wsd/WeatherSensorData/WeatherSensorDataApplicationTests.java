@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WeatherSensorDataApplicationTests {
-
-//	@Test
-	void contextLoads() {
-	}
-
+class WeatherSensorDataApplicationTests 
+{
+	@Test //Program loads
+	void contextLoads() 
+        {}
 }

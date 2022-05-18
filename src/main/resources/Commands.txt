@@ -1,0 +1,40 @@
+[[[Data Import]]]
+curl localhost:8080/wsd/register -d countryName=Ireland -d cityName=Limerick -d temperature=20 -d humidity=15 &
+curl localhost:8080/wsd/register -d countryName=Ireland -d cityName=Galway -d temperature=30 -d humidity=10 &
+curl localhost:8080/wsd/register -d countryName=Ireland -d cityName=Cork -d temperature=15 -d humidity=20 &
+curl localhost:8080/wsd/register -d countryName=Ireland -d cityName=Dublin -d temperature=20 -d humidity=15 &
+curl localhost:8080/wsd/register -d countryName=Ireland -d cityName=Athlone -d temperature=25 -d humidity=10 &
+curl localhost:8080/wsd/register -d countryName=UK -d cityName=London -d temperature=30 -d humidity=10 &
+curl localhost:8080/wsd/register -d countryName=UK -d cityName=Manchester -d temperature=25 -d humidity=15 &
+curl localhost:8080/wsd/register -d countryName=UK -d cityName=Bristol -d temperature=15 -d humidity=20
+
+[[[Command Prompt Examples]]]
+Add Sensor:
+curl localhost:8080/wsd/register -d countryName=Netherlands -d cityName=Utrecht -d temperature=25 -d humidity=15
+
+Get All Sensors:
+curl localhost:8080/wsd/getAll
+
+Get Specific Sensor:
+curl localhost:8080/wsd/getSensor/1
+
+Delete Sensor:
+curl localhost:8080/wsd/deleteSensor/1
+
+Average Temperature of Country:
+curl localhost:8080/wsd/getAverageTemp/Ireland
+curl localhost:8080/wsd/getAverageTemp/UK
+
+[[[Web Browser Examples]]]
+Get All Sensors:
+localhost:8080/wsd/getAll
+
+Get Specific Sensor:
+localhost:8080/wsd/getSensor/1
+
+Delete Sensor:
+localhost:8080/wsd/deleteSensor/1
+
+Average Temperature of Country:
+localhost:8080/wsd/getAverageTemp/Ireland
+localhost:8080/wsd/getAverageTemp/UK

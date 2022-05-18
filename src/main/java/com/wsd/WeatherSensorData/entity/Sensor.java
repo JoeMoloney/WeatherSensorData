@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.entitys;
+package com.wsd.WeatherSensorData.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +14,11 @@ import javax.persistence.Id;
  *
  * @author Joe Moloney
  */
-@Entity
+@Entity //Class is an Entity
 public class Sensor
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id //Primary Key
+    @GeneratedValue(strategy = GenerationType.AUTO) //Auto-gen Value
     private Integer id;
     private String country;
     private String city;

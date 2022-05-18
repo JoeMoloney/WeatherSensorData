@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.serviceimpl;
+package com.wsd.WeatherSensorData.service;
 
-import com.wsd.WeatherSensorData.entitys.Sensor;
-import com.wsd.WeatherSensorData.repositorys.SensorRepository;
+import com.wsd.WeatherSensorData.entity.Sensor;
+import com.wsd.WeatherSensorData.repository.SensorRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.wsd.WeatherSensorData.services.SensorService;
 import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Joe Moloney
  */
-@Component
+@Component //Custom Bean
 public class SensorServiceImpl implements SensorService
 {
-    @Autowired
+    @Autowired //Inject Bean into parent Bean
     private SensorRepository sensorRepository;
     
     @Override
@@ -46,4 +45,22 @@ public class SensorServiceImpl implements SensorService
         sensorRepository.delete(s);
     }
     
+    @Override
+    public Float getCountryAverageTemp(String country)
+    {
+        int count = 0, tally = 0;
+        float average;
+        Iterable<Sensor> countrySensors = findAll();
+        
+        for (Sensor s : countrySensors)
+        {
+            if(s.getCountry().equalsIgnoreCase(country))
+            {
+                tally += s.getTemperature();
+                count++;
+            }
+        }
+        
+        return average = tally / count;
+    }
 }

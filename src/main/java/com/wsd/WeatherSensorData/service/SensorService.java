@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.services;
+package com.wsd.WeatherSensorData.service;
 
-import com.wsd.WeatherSensorData.entitys.Sensor;
+import com.wsd.WeatherSensorData.entity.Sensor;
 import java.util.Optional;
 
 /**
@@ -18,4 +18,6 @@ public interface SensorService
     Iterable<Sensor> findAll();
     Optional<Sensor> findById(Integer i);
     void delete(Sensor s);
+    
+    Float getCountryAverageTemp(String country);
 }

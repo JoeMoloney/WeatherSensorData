@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.controllers;
+package com.wsd.WeatherSensorData.controller;
 
-import com.wsd.WeatherSensorData.entitys.Sensor;
+import com.wsd.WeatherSensorData.entity.Sensor;
 import java.util.Optional;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,23 +15,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.wsd.WeatherSensorData.serviceimpl.SensorServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import com.wsd.WeatherSensorData.services.SensorService;
+import com.wsd.WeatherSensorData.service.SensorService;
 
 /**
  *
  * @author Joe Moloney
  */
 @Controller
-@RequestMapping(path = "/wsd")
+@RequestMapping(path = "/wsd") //Map requests to controller methods
 public class SpringController
 {
     @Autowired
     private SensorService sensorService;
     
-    @PostMapping(path = "/register") //Register a new sensor
+    @PostMapping(path = "/register") //Register a new sensor using POST request
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody String registerSensor(@RequestParam String countryName, 
             @RequestParam String cityName, @RequestParam int temperature, @RequestParam int humidity)
@@ -48,7 +46,7 @@ public class SpringController
         return sensorService.findAll();
     }
     
-    @GetMapping(path = "/getSensor/{id}") //Get specific sensors data
+    @GetMapping(path = "/getSensor/{id}") //Get specific sensors data using GET request
     public @ResponseBody Sensor getSensor(@PathVariable String id)
     {
         Optional<Sensor> opt = sensorService.findById(Integer.parseInt(id));
@@ -59,17 +57,16 @@ public class SpringController
             throw new RuntimeException("Sensor not found for id: "+id);
     }
     
-    @GetMapping(path = "/updateSensor/{id}")
-    @Transactional
-    public @ResponseBody Sensor updateSensor(@PathVariable String id)
-    {
-        return null;
-    }
-    
     @GetMapping(path = "/deleteSensor/{id}")
     public @ResponseBody String deleteSensor(@PathVariable String id)
     {
         sensorService.delete(getSensor(id));
         return String.format("Sensor %s deleted", id);
+    }
+    
+    @GetMapping(path = "/getAverageTemp/{country}")
+    public @ResponseBody Float getCountryAverageTemp(@PathVariable String country)
+    {
+        return sensorService.getCountryAverageTemp(country);
     }
 }
