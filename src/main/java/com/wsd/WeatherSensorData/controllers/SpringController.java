@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.wsd.WeatherSensorData.service.SensorService;
+import com.wsd.WeatherSensorData.serviceimpl.SensorServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import com.wsd.WeatherSensorData.services.SensorService;
 
 /**
  *
@@ -29,14 +30,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class SpringController
 {
     @Autowired
-    private SensorService sensorRepository;
+    private SensorService sensorService;
     
     @PostMapping(path = "/register") //Register a new sensor
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody String registerSensor(@RequestParam String countryName, 
             @RequestParam String cityName, @RequestParam int temperature, @RequestParam int humidity)
     {
-        sensorRepository.save(new Sensor(countryName, cityName, temperature, humidity));
+        sensorService.save(new Sensor(countryName, cityName, temperature, humidity));
         return String.format("Saved: Country: %s, City: %s, Temperature: %d, Humidity: %d", 
                 countryName, cityName, temperature, humidity);
     }
@@ -44,13 +45,13 @@ public class SpringController
     @GetMapping(path = "/getAll") //Get all sensors and data
     public @ResponseBody Iterable<Sensor> getAllSensors()
     {
-        return sensorRepository.findAll();
+        return sensorService.findAll();
     }
     
     @GetMapping(path = "/getSensor/{id}") //Get specific sensors data
     public @ResponseBody Sensor getSensor(@PathVariable String id)
     {
-        Optional<Sensor> opt = sensorRepository.findById(Integer.parseInt(id));
+        Optional<Sensor> opt = sensorService.findById(Integer.parseInt(id));
         
         if (opt.isPresent())
             return opt.get();
@@ -68,7 +69,7 @@ public class SpringController
     @GetMapping(path = "/deleteSensor/{id}")
     public @ResponseBody String deleteSensor(@PathVariable String id)
     {
-        sensorRepository.delete(getSensor(id));
+        sensorService.delete(getSensor(id));
         return String.format("Sensor %s deleted", id);
     }
 }

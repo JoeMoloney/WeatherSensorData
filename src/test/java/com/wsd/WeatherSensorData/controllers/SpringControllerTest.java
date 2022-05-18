@@ -16,7 +16,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.web.servlet.MockMvc;
 
 /**
  *
@@ -30,8 +29,6 @@ class SpringControllerTest
     private TestRestTemplate restTemplate;
     @Autowired
     private SpringController springController; //Main application controller
-//    @Autowired
-//    private MockMvc mockMvc; //Test layer below, handles HTTP request by sending to controller
     
     @LocalServerPort
     private int port;
@@ -42,6 +39,15 @@ class SpringControllerTest
     {
         return new TestRestTemplate(TestRestTemplate.HttpClientOption.ENABLE_REDIRECTS, TestRestTemplate.HttpClientOption.ENABLE_COOKIES);
     }
+    
+//    @Before
+//    public void preLoadTestData()
+//    {
+//        sensorService.save(new Sensor("Ireland", "Limerick", 20, 30));
+//        sensorService.save(new Sensor("Ireland", "Galway", 25, 35));
+//        sensorService.save(new Sensor("Ireland", "Athlone", 20, 20));
+//        sensorService.save(new Sensor("Ireland", "Cork", 15, 45));
+//    }
     
     @Test
     public void contextLoads() throws Exception //Sanity Check

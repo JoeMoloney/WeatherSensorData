@@ -3,44 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.wsd.WeatherSensorData.service;
+package com.wsd.WeatherSensorData.serviceimpl;
 
 import com.wsd.WeatherSensorData.entitys.Sensor;
+import com.wsd.WeatherSensorData.repositorys.SensorRepository;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
+import com.wsd.WeatherSensorData.services.SensorService;
+import org.springframework.stereotype.Component;
 
 /**
  *
- * @author K00243015 | Joe Moloney
+ * @author Joe Moloney
  */
+@Component
 public class SensorServiceImpl implements SensorService
 {
     @Autowired
-    CrudRepository repo;
+    private SensorRepository sensorRepository;
     
     @Override
     public void save(Sensor s)
     {
-        repo.save(s);
+        sensorRepository.save(s);
     }
 
     @Override
     public Iterable<Sensor> findAll()
     {
-        return repo.findAll();
+        return sensorRepository.findAll();
     }
 
     @Override
     public Optional<Sensor> findById(Integer i)
     {
-        return repo.findById(i);
+        return sensorRepository.findById(i);
     }
 
     @Override
     public void delete(Sensor s)
     {
-        repo.delete(s);
+        sensorRepository.delete(s);
     }
     
 }
